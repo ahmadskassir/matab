@@ -21,17 +21,16 @@
         .header {
             background: linear-gradient(90deg, #007bff, #0d47a1);
             color: white;
-            padding: 0.5rem; /* زيادة طفيفة في الحشوة لتحسين المظهر */
+            padding: 0rem;
             display: flex;
             font-size: 15px;
             align-items: center;
-            width: 100vw; /* عرض كامل نسبي للشاشة */
-            position: relative; /* لضمان التحكم الكامل في العرض */
+            width: 100%;
         }
         .title {
             color: white;
             flex-grow: 1; /* يسمح للعنوان بأخذ المساحة المتاحة */
-            text-align: center; /* توسيط النص */
+            text-align: center; /* توسيط النص داخل الهيدر */
         }
         .logo {
             width: 60px;
@@ -40,8 +39,12 @@
 
         .container {
             width: 100%;
-            margin: 2rem 0; /* تعديل الهامش ليكون عموديًا فقط */
-            padding: 0;
+            padding: 2rem 0; /* هامش عمودي فقط */
+        }
+        .clinics-grid-wrapper {
+            max-width: 1200px; /* عرض أقصى للشبكة */
+            margin: 0 auto; /* توسيط الشبكة أفقياً */
+            padding: 0 1rem; /* هامش جانبي صغير للشاشات الصغيرة */
         }
         .login-btn {
             margin-left: auto;
@@ -63,14 +66,13 @@
         }
 
         .clinic-card {
-            width: 95%;
+            width: 100%; /* جعل البطاقة تأخذ العرض الكامل للخلية */
             background: #fff;
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: box-shadow 0.2s ease;
             border-style: hidden;
-            border: 20px;
         }
 
         .clinic-card:hover {
@@ -82,9 +84,7 @@
             height: 120px;
             object-fit: cover;
             border-radius: 90px;
-            border: 2px;
-            border-style: solid;
-            border-color: #0d47a1;
+            border: 2px solid #0d47a1;
         }
 
         .clinic-details {
@@ -132,29 +132,6 @@
 
         .book-btn:hover {
             background: #0d47a1;
-        }
-
-        /* Media Query للشاشات الصغيرة (الهواتف) */
-        @media (max-width: 768px) {
-            .header {
-                padding: 0.3rem; /* تقليل الحشوة على الهواتف */
-                font-size: 12px; /* تقليل حجم الخط */
-                width: 100vw; /* التأكد من العرض الكامل */
-            }
-            .logo {
-                width: 40px; /* تقليل حجم اللوجو */
-            }
-            .title {
-                font-size: 14px; /* تقليل حجم النص */
-                margin: 0 5px; /* هامش صغير للفصل بين العناصر */
-            }
-            .login-btn {
-                padding: 8px 15px; /* تقليل حجم الزر */
-                font-size: 12px;
-            }
-            .container {
-                margin: 1rem 0; /* تقليل الهامش */
-            }
         }
     </style>
 <script type="module">
@@ -206,7 +183,6 @@
                             <button class="book-btn" onclick="handleBooking(this)">رزرو</button>
                           </div>
                         </div>
-                        <br>
                     `;
                 });
 
@@ -232,7 +208,7 @@
         });
 
         function handleBooking(button) {
-            const card = button.closest('.doctor-card');
+            const card = button.closest('.clinic-card'); /* تصحيح ليتناسب مع اسم الكلاس */
             const clinicId = card.dataset.id;
             const clinicName = card.dataset.name;
             
@@ -248,10 +224,13 @@
         </a>
         <h2 class="title">مطب - با ما، درمان نزدیک‌تر از همیشه</h2>
         <a href="file:sign_in_page_code.html">
-            <b><button class="login-btn" onclick="Function1()">ورود</button></b>
+            <b><button class="login-btn" align="left" onclick="Function1()">ورود</button></b>
         </a>
     </header>
-    <br>
-    <div class="container" id="clinicContainer"></div>
+    <div class="container">
+        <div class="clinics-grid-wrapper">
+            <div class="clinics-grid" id="clinicContainer"></div>
+        </div>
+    </div>
 </body>
 </html>
