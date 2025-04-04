@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
-<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>matab</title>
     <style>
-               html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-        }
-        body {
+       body {
             font-family: 'Arial', sans-serif;
+            margin: 0;
             background-color: #f4f4f4;
-            min-width: 320px;
         }
         * {
             box-sizing: border-box;
@@ -28,41 +21,27 @@
         .header {
             background: linear-gradient(90deg, #007bff, #0d47a1);
             color: white;
-            padding: 0 1rem;
+            padding: 0rem;
             display: flex;
-            font-size:15px;
+            font-size: 15px;
             align-items: center;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            justify-content: space-between;
+            width: 100%;
         }
-        
         .title {
-            color:white;
-            white-space: nowrap;
-            padding: 0 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            flex-shrink: 0;
+            color: white;
         }
-        
         .logo {
             width: 60px;
             border-radius: 30px;
-            flex-shrink: 0;
         }
 
         .container {
-            max-width: 100%;
-            margin: 2rem auto;
-            padding: 0 15px;
+            width: 100%;
+            margin: 2rem;
+            padding: 0 0px;
         }
-        
         .login-btn {
+            margin-left: auto;
             padding: 10px 20px;
             background: #1a237e;
             color: white;
@@ -70,15 +49,13 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s ease;
-            flex-shrink: 0;
         }
-
         .login-btn:hover {
             background: #0d47a1;
         }
         .clinics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
@@ -88,13 +65,12 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: box-shadow 0.2s ease;'
+            transition: box-shadow 0.2s ease;
             border-style: hidden;
-            border:20px;
+            border: 20px;
         }
 
         .clinic-card:hover {
-            /*transform: translateY(-5px);*/
             box-shadow: 0px 2px 4px 2.5px #0d47a1;
         }
 
@@ -103,9 +79,9 @@
             height: 120px;
             object-fit: cover;
             border-radius: 90px;
-            border:2px;
-            border-style:  solid ;
-            border-color:  #0d47a1 ;
+            border: 2px;
+            border-style: solid;
+            border-color: #0d47a1;
         }
 
         .clinic-details {
@@ -156,91 +132,86 @@
         }
     </style>
 <script type="module">
-
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
-    apiKey: "AIzaSyA8_cJnR_dEEFLiAw6mdU2k0tR3uqsmizw",
-    authDomain: "matab-dc0d4.firebaseapp.com",
-    projectId: "matab-dc0d4",
-    storageBucket: "matab-dc0d4.firebasestorage.app",
-    messagingSenderId: "209043899390",
-    appId: "1:209043899390:web:b2e0ac38f511aa7feeb6af",
-    measurementId: "G-V81HG3BDHL"
-  };
-
+            apiKey: "AIzaSyA8_cJnR_dEEFLiAw6mdU2k0tR3uqsmizw",
+            authDomain: "matab-dc0d4.firebaseapp.com",
+            projectId: "matab-dc0d4",
+            storageBucket: "matab-dc0d4.firebasestorage.app",
+            messagingSenderId: "209043899390",
+            appId: "1:209043899390:web:b2e0ac38f511aa7feeb6af",
+            measurementId: "G-V81HG3BDHL"
+        };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-async function loadClinics() {
-    try {
-        const clinicContainer = document.getElementById("clinicContainer"); // 1. تصحيح اسم ID
-        
-        if (!clinicContainer) {
-            console.error("Element with ID 'clinicContainer' not found");
-            document.body.innerHTML += '<p class="error">Error: Clinic container not found</p>'; // 2. عرض خطأ للمستخدم
-            return;
+        async function loadClinics() {
+            try {
+                const clinicContainer = document.getElementById("clinicContainer");
+                
+                if (!clinicContainer) {
+                    console.error("Element with ID 'clinicContainer' not found");
+                    document.body.innerHTML += '<p class="error">Error: Clinic container not found</p>';
+                    return;
+                }
+
+                clinicContainer.innerHTML = '<p>Loading clinics...</p>';
+                
+                const querySnapshot = await getDocs(collection(db, "Clinic"));
+                let clinicHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const clinic = doc.data();
+                    clinicHTML += `
+                        <div class="clinic-card" 
+                             data-id="${doc.id}"
+                             data-name="${clinic.name}"
+                             data-image="${clinic.image}"
+                             data-bio="${clinic.bio}"
+                             data-address="${clinic.address}">
+                          <div class="clinic-details">
+                            <img src="${clinic.image || 'placeholder.jpg'}" class="clinic-image" alt="${clinic.name}">
+                            <h2 class="clinic-name">${clinic.name}</h2>
+                            <h4 class="bio">${clinic.bio}</h4>
+                            <h3 class="clinic-address">${clinic.address}</h3>
+                            <button class="book-btn" onclick="handleBooking(this)">رزرو</button>
+                          </div>
+                        </div>
+                        <br>
+                    `;
+                });
+
+                clinicContainer.innerHTML = clinicHTML || '<p>No clinics found</p>';
+                
+                document.querySelectorAll('.book-btn').forEach(btn => {
+                    btn.addEventListener('click', () => handleBooking(btn));
+                });
+                
+            } catch (error) {
+                console.error("Error loading clinics:", error);
+                const errorContainer = document.getElementById("clinicContainer") || document.body;
+                errorContainer.innerHTML = `
+                    <p class="error">Error loading clinics: ${error.message || 'Unknown error'}</p>
+                `;
+            }
         }
 
-        clinicContainer.innerHTML = '<p>Loading clinics...</p>';
-        
-        const querySnapshot = await getDocs(collection(db, "Clinic")); // 3. تصحيح اسم الكولكشن إن لزم
-        let clinicHTML = '';
-        
-        querySnapshot.forEach((doc) => {
-            const clinic = doc.data();
-            clinicHTML += `
-                <div class="clinic-card" 
-                     data-id="${doc.id}"
-                     data-name="${clinic.name}"
-                     data-image="${clinic.image}"
-                     data-bio="${clinic.bio}"
-                     data-address="${clinic.address}">
-                  <div class="clinic-details">
-                    <img src="${clinic.image || 'placeholder.jpg'}" class="clinic-image" alt="${clinic.name}"> <!-- 4. إضافة صورة افتراضية ونص بديل -->
-                    <h2 class="clinic-name">${clinic.name}</h2>
-                    <h4 class="bio">${clinic.bio}</h4>
-                    <h3 class="clinic-address">${clinic.address}</h3>
-                    <button class="book-btn" onclick="handleBooking(this)">رزرو</button>
-                  </div>
-                </div>
-<br>
-            `;
+        window.addEventListener('load', () => {
+            loadClinics().catch(error => {
+                console.error("Unhandled error:", error);
+            });
         });
 
-        clinicContainer.innerHTML = clinicHTML || '<p>No clinics found</p>';
-        
-        
-        document.querySelectorAll('.book-btn').forEach(btn => {
-            btn.addEventListener('click', () => handleBooking(btn));
-        });
-        
-    } catch (error) {
-        console.error("Error loading clinics:", error);
-        const errorContainer = document.getElementById("clinicContainer") || document.body;
-        errorContainer.innerHTML = `
-            <p class="error">Error loading clinics: ${error.message || 'Unknown error'}</p>
-        `;
-    }
-}
-
-
-window.addEventListener('load', () => {
-    loadClinics().catch(error => {
-        console.error("Unhandled error:", error);
-    });
-});
-
-
-function handleBooking(button) {
-    const card = button.closest('.doctor-card');
-    const clinicId = card.dataset.id;
-    const clinicName = card.dataset.name;
-    
-    console.log(`Booking clinic: ${clinicName} (ID: ${clinicId})`);
-}
+        function handleBooking(button) {
+            const card = button.closest('.doctor-card');
+            const clinicId = card.dataset.id;
+            const clinicName = card.dataset.name;
+            
+            console.log(`Booking clinic: ${clinicName} (ID: ${clinicId})`);
+        }
 </script>
 </head>
 
@@ -251,9 +222,10 @@ function handleBooking(button) {
         </a>
         <h2 class="title">مطب - با ما، درمان نزدیک‌تر از همیشه</h2>
         <a href="file:sign_in_page_code.html">
-            <button class="login-btn">ورود</button>
+            <b><button class="login-btn" align="left" onclick="Function1()">ورود</button></b>
         </a>
     </header>
+    <br>
     <div class="container" id="clinicContainer"></div>
 </body>
 </html>
