@@ -10,7 +10,6 @@
        body {
             font-family: 'Arial', sans-serif;
             margin: 0;
-            
             background-color: #f4f4f4;
         }
         * {
@@ -23,19 +22,21 @@
         .header {
             background: linear-gradient(90deg, #007bff, #0d47a1);
             color: white;
-            padding: 0rem;
+            padding: 0 1rem;
             display: flex;
             font-size:15px;
             align-items: center;
-            Width:100%;
-            
+            width: 100%;
+            justify-content: space-between;
         }
         .title {
             color:white;
-          }
+            white-space: nowrap;
+            margin: 0 auto;
+        }
         .logo {
             width: 60px;
-            margin-left: 15px;
+            margin-right: 15px;
             border-radius: 30px;
         }
 
@@ -45,7 +46,6 @@
             padding: 0 0px;
         }
         .login-btn {
-            margin-left: auto;
             padding: 10px 20px;
             background: #1a237e;
             color: white;
@@ -53,7 +53,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s ease;
-        }
+            }
         .login-btn:hover {
             background: #0d47a1;
         }
@@ -227,15 +227,15 @@ function handleBooking(button) {
 
 <body>
     <header class="header">
-<a href="file:project_main_page_code.html">
-        <img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="logo" class="logo">
-</a>
-        <h2 class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<h2>
-<a href="file:sign_in_page_code.html">
-<b><button class="login-btn" align="left" onclick="Function1()">ورود</button><b>
-</a>
-</header>
-<br>
-<div class="container" id="clinicContainer"></div>
+        <a href="file:project_main_page_code.html">
+            <img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="logo" class="logo">
+        </a>
+        <h2 class="title">مطب - با ما، درمان نزدیک‌تر از همیشه</h2>
+        <a href="file:sign_in_page_code.html">
+            <button class="login-btn">ورود</button>
+        </a>
+    </header>
+    <br>
+    <div class="container" id="clinicContainer"></div>
 </body>
 </html>
