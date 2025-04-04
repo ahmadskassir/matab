@@ -251,13 +251,16 @@ SpecialtiesContainer
     window.location.href = `laboratory.html`;
                     };
     document.getElementById("signinButton").addEventListener("click", opensigninPage);
-
+    document.getElementById("profileButton").addEventListener("click", opensigninPage);
+    document.getElementById("clinicButton").addEventListener("click", opensigninPage);  document.getElementById("signinButton").addEventListener("click", opensigninPage);
+    document.getElementById("imagingButton").addEventListener("click", opensigninPage);
+    document.getElementById("laboratoryButton").addEventListener("click", opensigninPage);
 
     </script>
 </head>
 <body>
 <div class="header">
-<img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="matab" class="logo" onclick="openprofilePage()">
+<img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="matab" class="logo" id="profileButton" onclick="openprofilePage()">
 <h2 align="center" class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه :) &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; </h2>
 <b><button  id="signinButton" class="login-btn" align="left" onclick="opensigninPage()">ورود</button><b>
 </b></b></a><b><b>
@@ -267,9 +270,9 @@ SpecialtiesContainer
 <b><button class="login-btn">جستجو</button><b>
 </b></b></div><b><b>
 <div class="image-gallery">
-<img src="https://i.postimg.cc/5yF47ks4/images-removebg-preview.png" alt="آزمایشگاه" class="gallery-img" onclick="openlaboratoryPage()">
-<img src="https://cdn-icons-png.flaticon.com/512/5717/5717514.png" alt="کلینیک" class="gallery-img" onclick="openclinicPage()">
-<img src="https://i.postimg.cc/mrX1KJyC/images-1-removebg-preview.png" alt="مرکز تصویربرداری" class="gallery-img" onclick="openimagingPage()">
+<img src="https://i.postimg.cc/5yF47ks4/images-removebg-preview.png" alt="آزمایشگاه" class="gallery-img" id="laboratoryButton" onclick="openlaboratoryPage()">
+<img src="https://cdn-icons-png.flaticon.com/512/5717/5717514.png" alt="کلینیک" class="gallery-img" id="clinicButton" onclick="openclinicPage()">
+<img src="https://i.postimg.cc/mrX1KJyC/images-1-removebg-preview.png" alt="مرکز تصویربرداری" class="gallery-img" id="imagingButton" onclick="openimagingPage()">
 </div>
 <div class="image-gallery">
 <h3 class="B">آزمایشگاه</h3>
