@@ -10,6 +10,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             background-color: #f4f4f4;
+            
         }
         * {
             box-sizing: border-box;
@@ -19,14 +20,14 @@
         }
 
         .header {
-            background: linear-gradient(90deg, #007bff, #0d47a1);
-            color: white;
-            padding: 0rem;
-            display: flex;
-            font-size: 15px;
-            align-items: center;
-            width: 100%;
-        }
+        background: linear-gradient(90deg, #007bff, #0d47a1);
+        color: white;
+        padding: 0rem;
+        display: flex;
+        font-size: 15px;
+        align-items: center;
+        width: 100%;
+    }
         .title {
             color: white;
         }
@@ -37,8 +38,15 @@
 
         .container {
             width: 100%;
-            margin: 2rem;
-            padding: 0 0px;
+            padding: 2rem 0; /* هامش عمودي فقط */
+            display: flex;
+            justify-content: center;
+        }
+        .clinics-grid-wrapper {
+            max-width: 1200px; /* الحد الأقصى للعرض */
+            width: 100%; /* لضمان أن يأخذ العرض الكامل المتاح */
+            margin: 0 auto; /* توسيط العنصر */
+            padding: 0 1rem; /* مسافة داخلية متساوية */
         }
         .login-btn {
             margin-left: auto;
@@ -60,14 +68,13 @@
         }
 
         .clinic-card {
-            width: 95%;
+            width: 100%; /* جعل البطاقة تأخذ العرض الكامل للخلية */
             background: #fff;
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: box-shadow 0.2s ease;
             border-style: hidden;
-            border: 20px;
         }
 
         .clinic-card:hover {
@@ -79,9 +86,7 @@
             height: 120px;
             object-fit: cover;
             border-radius: 90px;
-            border: 2px;
-            border-style: solid;
-            border-color: #0d47a1;
+            border: 2px solid #0d47a1;
         }
 
         .clinic-details {
@@ -180,7 +185,6 @@
                             <button class="book-btn" onclick="handleBooking(this)">رزرو</button>
                           </div>
                         </div>
-                        <br>
                     `;
                 });
 
@@ -206,7 +210,7 @@
         });
 
         function handleBooking(button) {
-            const card = button.closest('.doctor-card');
+            const card = button.closest('.clinic-card'); /* تصحيح ليتناسب مع اسم الكلاس */
             const clinicId = card.dataset.id;
             const clinicName = card.dataset.name;
             
@@ -225,7 +229,10 @@
             <b><button class="login-btn" align="left" onclick="Function1()">ورود</button></b>
         </a>
     </header>
-    <br>
-    <div class="container" id="clinicContainer"></div>
+    <div class="container">
+        <div class="clinics-grid-wrapper">
+            <div class="clinics-grid" id="clinicContainer"></div>
+        </div>
+    </div>
 </body>
 </html>
