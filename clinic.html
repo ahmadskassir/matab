@@ -21,15 +21,17 @@
         .header {
             background: linear-gradient(90deg, #007bff, #0d47a1);
             color: white;
-            padding: 0rem;
+            padding: 0.5rem; /* زيادة طفيفة في الحشوة لتحسين المظهر */
             display: flex;
             font-size: 15px;
             align-items: center;
-            width: 100%;
-            justify-content: space-between;
+            width: 100vw; /* عرض كامل نسبي للشاشة */
+            position: relative; /* لضمان التحكم الكامل في العرض */
         }
         .title {
             color: white;
+            flex-grow: 1; /* يسمح للعنوان بأخذ المساحة المتاحة */
+            text-align: center; /* توسيط النص */
         }
         .logo {
             width: 60px;
@@ -38,8 +40,8 @@
 
         .container {
             width: 100%;
-            margin: 2rem;
-            padding: 0 0px;
+            margin: 2rem 0; /* تعديل الهامش ليكون عموديًا فقط */
+            padding: 0;
         }
         .login-btn {
             margin-left: auto;
@@ -131,6 +133,27 @@
         .book-btn:hover {
             background: #0d47a1;
         }
+                /* Media Query للشاشات الصغيرة (الهواتف) */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.3rem; /* تقليل الحشوة على الهواتف */
+                font-size: 12px; /* تقليل حجم الخط */
+                width: 100vw; /* التأكد من العرض الكامل */
+            }
+            .logo {
+                width: 40px; /* تقليل حجم اللوجو */
+            }
+            .title {
+                font-size: 14px; /* تقليل حجم النص */
+                margin: 0 5px; /* هامش صغير للفصل بين العناصر */
+            }
+            .login-btn {
+                padding: 8px 15px; /* تقليل حجم الزر */
+                font-size: 12px;
+            }
+            .container {
+                margin: 1rem 0; /* تقليل الهامش */
+            }
     </style>
 <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
