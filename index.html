@@ -225,16 +225,38 @@ SpecialtiesContainer
     }
 
     window.addEventListener('DOMContentLoaded', loadAllData);
+
+   function opensigninPage(doctorId) {
+   
+    window.location.href = `sign_in_page_code.html`;
+                    };
+   function openprofilePage(doctorId) {
+   
+    window.location.href = `index.html`;
+                    };
+   function opendoctorlistPage(doctorId) {
+   
+    window.location.href = `doctor_lists_code.html`;
+                    };
+   function openclinicPage(doctorId) {
+   
+    window.location.href = `clinic.html`;
+                    };
+   function openimagingPage(doctorId) {
+   
+    window.location.href = `imaging.html`;
+                    };
+   function openlaboratoryPage(doctorId) {
+   
+    window.location.href = `laboratory.html`;
+                    };
     </script>
 </head>
 <body>
 <div class="header">
-<a href="file:project_main_page_code.html">
-<img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="matab" class="logo">
-</a>
+<img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="matab" class="logo" onclick="OpenprofilePage()">
 <h2 align="center" class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه :) &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; </h2>
-<a href="file:sign_in_page_code.html">
-<b><button class="login-btn" align="left" onclick="Function1()">ورود</button><b>
+<b><button class="login-btn" align="left" onclick="OpensigninPage()">ورود</button><b>
 </b></b></a><b><b>
 </b></b></div><b><b>
 <div class="search-container">
@@ -242,15 +264,9 @@ SpecialtiesContainer
 <b><button class="login-btn">جستجو</button><b>
 </b></b></div><b><b>
 <div class="image-gallery">
-<a href="file:laboratory.html">
-<img src="https://i.postimg.cc/5yF47ks4/images-removebg-preview.png" alt="آزمایشگاه" class="gallery-img">
-</a>
-<a href="file:clinic.html">
-<img src="https://cdn-icons-png.flaticon.com/512/5717/5717514.png" alt="کلینیک" class="gallery-img">
-</a>
-<a href="file:imaging.html">
-<img src="https://i.postimg.cc/mrX1KJyC/images-1-removebg-preview.png" alt="مرکز تصویربرداری" class="gallery-img">
-</a>
+<img src="https://i.postimg.cc/5yF47ks4/images-removebg-preview.png" alt="آزمایشگاه" class="gallery-img" onclick="OpenlaboratoryPage()">
+<img src="https://cdn-icons-png.flaticon.com/512/5717/5717514.png" alt="کلینیک" class="gallery-img" onclick="OpenclinicPage()">
+<img src="https://i.postimg.cc/mrX1KJyC/images-1-removebg-preview.png" alt="مرکز تصویربرداری" class="gallery-img" onclick="OpenimagingPage()">
 </div>
 <div class="image-gallery">
 <h3 class="B">آزمایشگاه</h3>
