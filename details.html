@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
+<head>
+    <title>تفاصيل الطبيب</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            
+            background-color: #f4f4f4;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+        .header {
+            background: linear-gradient(90deg, #007bff, #0d47a1);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            font-size:15px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .title {
+            color:white;
+          }
+        .logo {
+            width: 60px;
+            margin-left: 15px;
+            border-radius: 30px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .login-btn {
+            margin-left: auto;
+            padding: 10px 20px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-btn:hover {
+            background: #0d47a1;
+        }
+       .doctor-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-bottom: 3px solid #0d47a1;
+        }
+
+        .doctor-info {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        .doctor-info:hover{
+            box-shadow: 0px 2px 4px 2.5px #0d47a1;
+        }
+
+        .doctor-name {
+            color: #1a237e;
+            margin: 0;
+        }
+
+        .specialty {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .clinic-address {
+            color: #888;
+            margin: 5px 0;
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .day-schedule {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .day-shedule:hover {
+            box-shadow: 0px 2px 4px 2.5px #0d47a1;
+        }
+
+        .time-slot {
+            color:#595959;
+            background: #f4f4f4;;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .time-slot:hover {
+            background: #0d47a1;
+            color: white;
+        }
+
+        .price {
+            color: #1a237e;
+            font-size: 1.2em;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .book-btn {bhb hanin;
+            background: #1a237e;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            background: #0d47a1;
+        }
+        .date{
+            color: #595959;
+            border-radius: 5px;
+            margin: 15px;
+        }
+        @media (max-width: 768px) {
+            .schedule {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- أضف SDK Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+
+    <header class="header">
+<a href="file:project_main_page_code.html">
+        <img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="logo" class="logo">
+</a>
+        <h2 class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<h2>
+<a href="file:sign_in_page_code.html">
+<b><button class="login-btn" align="left" onclick="Function1()">ورود</button><b>
+</a>
+</header>
+<br>
+<div class="container">
+    <div class="doctor-info">
+        <img id="doctor-img" class="doctor-image" src="" alt="loading_doctor_information_please_wait!">
+        <h1 id="doctor-name" class="doctor-name"></h1>
+        <h3 id="doctor-specialty" class="specialty"></h3>
+        <p id="doctor-address" class="clinic-address"></p>
+        <p id="doctor-bio"></p>
+    </div>
+<div class="schedule">
+<div class="day-schedule">
+<h3 id="doctor-day1" class="date"></h3>
+<button id="doctor-check0" class="time-slot hidden">14:00-->14:15</button>
+<button id="doctor-check1" class="time-slot hidden">14:15-->14:30</button>
+<button id="doctor-check2" class="time-slot hidden">14:30-->14:45</button>
+<button id="doctor-check3" class="time-slot hidden">14:45-->15:00</button>
+<button id="doctor-check4" class="time-slot hidden">15:00-->15:15</button>
+<button id="doctor-check5" class="time-slot hidden">15:15-->15:30</button>
+<button id="doctor-check6" class="time-slot hidden">15:30-->15:45</button>
+<button id="doctor-check7" class="time-slot hidden">15:45-->16:00</button>
+
+</div>
+<div class="day-schedule">
+<h3 id="doctor-day2" class="date"></h3>
+<button id="doctor-check8" class="time-slot hidden">14:00-->14:15</button>
+<button id="doctor-check9" class="time-slot hidden">14:15-->14:30</button>
+<button id="doctor-check10" class="time-slot hidden">14:30-->14:45</button>
+<button id="doctor-check11" class="time-slot hidden">14:45-->15:00</button>
+<button id="doctor-check12" class="time-slot hidden">15:00-->15:15</button>
+<button id="doctor-check13" class="time-slot hidden">15:15-->15:30</button>
+<button id="doctor-check14" class="time-slot hidden">15:30-->15:45</button>
+<button id="doctor-check15" class="time-slot hidden">15:45-->16:00</button>
+
+</div>
+<div class="day-schedule">
+<h3 id="doctor-day3" class="date"></h3>
+<button id="doctor-check16" class="time-slot hidden">14:00-->14:15</button>
+<button id="doctor-check17" class="time-slot hidden">14:15-->14:30</button>
+<button id="doctor-check18" class="time-slot hidden">14:30-->14:45</button>
+<button id="doctor-check19" class="time-slot hidden">14:45-->15:00</button>
+<button id="doctor-check20" class="time-slot hidden">15:00-->15:15</button>
+<button id="doctor-check21" class="time-slot hidden">15:15-->15:30</button>
+<button id="doctor-check22" class="time-slot hidden">15:30-->15:45</button>
+<button id="doctor-check23" class="time-slot hidden">15:45-->16:00</button>
+
+</div>
+
+        </div>
+<div id="doctor-price" class="price">
+        </div>
+
+        <button class="book-btn">تاييد وپرداخت</button>
+</div>
+    
+    <script>
+        // Firebase
+         const firebaseConfig = {
+        apiKey: "AIzaSyA8_cJnR_dEEFLiAw6mdU2k0tR3uqsmizw",
+        authDomain: "matab-dc0d4.firebaseapp.com",
+        projectId: "matab-dc0d4",
+        storageBucket: "matab-dc0d4.appspot.com",  
+        messagingSenderId: "209043899390",
+        appId: "1:209043899390:web:b2e0ac38f511aa7feeb6af",
+        measurementId: "G-V81HG3BDHL"
+    };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // id doctor from url
+        const urlParams = new URLSearchParams(window.location.search);
+        const doctorId = urlParams.get('id');
+        // data of the doctor
+        if (doctorId) {
+            db.collection("doctors").doc(doctorId).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const doctor = doc.data();
+                        displayDoctorDetails(doctor);
+                        
+                    } else {
+                        document.body.innerHTML = '<h1>doctor not found</h1>';
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting document:", error);
+                    document.body.innerHTML = '<h1>error loading data</h1>';
+                });
+        } else {
+            document.body.innerHTML = '<h1>doctor not available</h1>';
+        }
+
+function displayDoctorDetails(doctor) {
+    // تحديث البيانات الأساسية
+    document.getElementById('doctor-name').textContent = doctor.name;
+    document.getElementById('doctor-specialty').textContent = `تخصص: ${doctor.specialty}`;
+    document.getElementById('doctor-address').textContent = `📍 ادرس: ${doctor.address}`;
+    document.getElementById('doctor-bio').textContent = doctor.bio;
+    document.getElementById('doctor-img').src = doctor.image;
+    document.getElementById('doctor-price').textContent = `هزينه ويزيت: ${doctor.price} تومان`;
+    
+    // تحديث الأيام
+    document.getElementById('doctor-day1').textContent = doctor.days[0];
+    document.getElementById('doctor-day2').textContent = doctor.days[1];
+    document.getElementById('doctor-day3').textContent = doctor.days[2];
+
+    // تحديث الأوقات باستخدام حلقة
+    for (let i = 0; i < 24; i++) {
+        const isTimeAvailable = doctor.times[i]; // القيمة boolean
+        const timeElement = document.getElementById(`doctor-check${i}`);
+        
+        if (timeElement) { // تأكد من وجود العنصر
+            timeElement.classList.toggle("hidden", !isTimeAvailable);
+        }
+    }
+}
+    </script>
+</body>
+</html>

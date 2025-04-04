@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matab</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            
+            background-color: #f4f4f4;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #007bff, #0d47a1);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            font-size:15px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .title {
+            color:white;
+          }
+        .logo {
+            width: 60px;
+            margin-left: 15px;
+            border-radius: 30px;
+        }
+
+        .container {
+            width: 100%;
+            margin: 2rem;
+            padding: 0 0px;
+        }
+        .login-btn {
+            margin-left: auto;
+            padding: 10px 20px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-btn:hover {
+            background: #0d47a1;
+        }
+        .Imaging-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .Imaging-card {
+            width: 95%;
+            background: #fff;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s ease;'
+            border-style: hidden;
+            border:20px;
+        }
+
+        .Imaging-card:hover {
+            /*transform: translateY(-5px);*/
+            box-shadow: 0px 2px 4px 2.5px #0d47a1;
+        }
+
+        .Imaging-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 90px;
+            border:2px;
+            border-style:  solid ;
+            border-color:  #0d47a1 ;
+        }
+
+        .Imaging-details {
+            padding: 1.5rem;
+        }
+
+        .Imaging-name {
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .Imaging-address {
+            color: #444;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .availability-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .book-btn {
+            background: #1a237e;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background: #0d47a1;
+        }
+    </style>
+<script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+    apiKey: "AIzaSyA8_cJnR_dEEFLiAw6mdU2k0tR3uqsmizw",
+    authDomain: "matab-dc0d4.firebaseapp.com",
+    projectId: "matab-dc0d4",
+    storageBucket: "matab-dc0d4.firebasestorage.app",
+    messagingSenderId: "209043899390",
+    appId: "1:209043899390:web:b2e0ac38f511aa7feeb6af",
+    measurementId: "G-V81HG3BDHL"
+  };
+
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+async function loadImaging() {
+    try {
+        const ImagingContainer = document.getElementById("ImagingContainer"); 
+        
+        if (!ImagingContainer) {
+            console.error("Element with ID 'imagingContainer' not found");
+            document.body.innerHTML += '<p class="error">Error: Imaging container not found</p>'; 
+            return;
+        }
+
+        ImagingContainer.innerHTML = '<p>Loading Imaging Centers...</p>';
+        
+        const querySnapshot = await getDocs(collection(db, "Imaging")); 
+        let ImagingHTML = '';
+        
+        querySnapshot.forEach((doc) => {
+            const Imaging = doc.data();
+            ImagingHTML += `
+                <div class="Imaging-card" 
+                     data-id="${doc.id}"
+                     data-name="${Imaging.name}"
+                     data-image="${Imaging.image}"
+                     data-bio="${Imaging.bio}"
+                     data-address="${Imaging.address}">
+                  <div class="Imaging-details">
+                    <img src="${Imaging.image || 'placeholder.jpg'}" class="Imaging-image" alt="${Imaging.name}">
+                    <h2 class="Imaging-name">${Imaging.name}</h2>
+                    <h4 class="bio">${Imaging.bio}</h4>
+                    <h3 class="Imaging-address">${Imaging.address}</h3>
+                    <button class="book-btn" onclick="handleBooking(this)">رزرو</button>
+                  </div>
+                </div>
+<br>
+            `;
+        });
+
+        ImagingContainer.innerHTML = ImagingHTML || '<p>No Imaging Centers found</p>';
+        
+        
+        document.querySelectorAll('.book-btn').forEach(btn => {
+            btn.addEventListener('click', () => handleBooking(btn));
+        });
+        
+    } catch (error) {
+        console.error("Error loading Imaging centers:", error);
+        const errorContainer = document.getElementById("ImagingContainer") || document.body;
+        errorContainer.innerHTML = `
+            <p class="error">Error loading Imaging centers: ${error.message || 'Unknown error'}</p>
+        `;
+    }
+}
+
+
+window.addEventListener('load', () => {
+    loadImaging().catch(error => {
+        console.error("Unhandled error:", error);
+    });
+});
+
+
+function handleBooking(button) {
+    const card = button.closest('.Imaging-card');
+    const ImagingId = card.dataset.id;
+    const ImagingName = card.dataset.name;
+    
+    console.log(`Booking clinic: ${ImagingName} (ID: ${ImagingId})`);
+}
+</script>
+</head>
+
+<body>
+    <header class="header">
+<a href="file:project_main_page_code.html">
+        <img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="logo" class="logo">
+</a>
+        <h2 class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<h2>
+<a href="file:sign_in_page_code.html">
+<b><button class="login-btn" align="left" onclick="Function1()">ورود</button><b>
+</a>
+</header>
+<br>
+<div class="container" id="ImagingContainer"></div>
+</body>
+</html>

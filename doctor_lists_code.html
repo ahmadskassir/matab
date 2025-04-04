@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matab</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            
+            background-color: #f4f4f4;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #007bff, #0d47a1);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            font-size:15px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .title {
+            color:white;
+          }
+        .logo {
+            width: 60px;
+            margin-left: 15px;
+            border-radius: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        .login-btn {
+            margin-left: auto;
+            padding: 10px 20px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-btn:hover {
+            background: #0d47a1;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .doctor-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .doctor-card:hover {
+            /*transform: translateY(-5px);*/
+            box-shadow: 0px 2px 4px 2.5px #0d47a1;
+        }
+
+        .doctor-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-bottom: 3px solid #0d47a1;
+        }
+
+        .doctor-details {
+            padding: 1.5rem;
+        }
+
+        .doctor-name {
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+
+        .specialty {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .clinic-address {
+            color: #444;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .availability-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .book-btn {
+            background: #1a237e;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+<a href="file:project_main_page_code.html">
+        <img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="logo" class="logo">
+</a>
+        <h2 class="title"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;مطب - با ما، درمان نزدیک‌تر از همیشه&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<h2>
+<a href="file:sign_in_page_code.html">
+<b><button class="login-btn" align="left" onclick="Function1()">ورود</button><b>
+</a>
+</header>
+    <div class="container">
+        <div class="doctors-grid">
+           
+            <div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2021/11/cwLjGvJuCLLs1gwidcB4jxteoW3NOT4sSuz4Lvyc.jpg" alt="دکتر بهروز مقدادی" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر بهروز مقدادی</h2>
+                    <p class="specialty">تخصص کودکان و اطفال</p>
+                    <p class="clinic-address">📍 تهران، بلوار شهران شمالی، ساختمان داروخانه شبانه روزی دکتر کریمان، طبقه سوم، بلوک شرقی، واحد 31</p>
+                    <div class="availability-badge">⏳ اولین نوبت آزاد مطب:
+فردا</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2024/11/CgM8CDsXZo2wXK7WZwyvhoFBzlYzk7AqJHgUkw5g.jpg" alt="دکتر بهنام مقدادی" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر بهنام مقدادی</h2>
+                    <p class="specialty">تخصص کودکان و اطفال</p>
+                    <p class="clinic-address">📍 تهران، خیابان فرجام غربی، تقاطع فرجام و شهید آیت (میدان صدم)، ساختمان پزشکان نگین، واحد 3</p>
+                    <div class="availability-badge">⏳اولین نوبت آزاد مطب:
+امروز</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+
+<div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2021/11/POufpC78QPUmEpnf0XnM0V97bPAWmTMqpThq9p69.jpg" alt="دکتر سید محسن دهقانی" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر سید محسن دهقانی</h2>
+                    <p class="specialty">فوق تخصص گوارش کودکان</p>
+                    <p class="clinic-address">📍 شیراز، خیابان معدل شرقی، روبه روی اداره کل آموزش و پرورش، ساختمان شاپرک، طبقه سوم، واحد 14</p>
+                    <div class="availability-badge">⏳اولین نوبت آزاد مطب:
+امروز</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+
+<div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2021/11/a42hJC98uy1pFkniD7iRhLv2kAJGT0eOiQ3WBxfw.jpg" alt="دکتر علی اکبر سیاری" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر علی اکبر سیاری</h2>
+                    <p class="specialty">فوق تخصص گوارش کودکان</p>
+                    <p class="clinic-address">📍 تهران، خیابان شریعتی، روبروی ظفر، کوچه امانی، پلاک 2، طبقه 3</p>
+                    <div class="availability-badge">⏳اولین نوبت آزاد مطب:
+امروز</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+
+<div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2023/7/oYfgDxkkATIfxSGwgIOKHkg1rFQUdj4ceD4FwAuK.jpg" alt="دکتر عادل رضایی" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر عادل رضایی</h2>
+                    <p class="specialty">فوق تخصص طب نوزادی</p>
+                    <p class="clinic-address">📍کرمان، چهارراه طهماسب آباد، ساختمان خاتم الانبیاء، طبقه زیرزمین</p>
+                    <div class="availability-badge">⏳اولین نوبت آزاد مطب:
+امروز</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+
+
+            <div class="doctor-card">
+                <img src="https://statics.doctoreto.com/preset:sharp/resize:fill:180:180:0/gravity:sm/plain/s3://drto/avatar/doctor/2021/12/xZ1RnoujdgKc73aGYW7pxptOSFrDRUsCqCtTl4Mr.jpg" alt="دکتر شهاب نوریان" class="doctor-image">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">دکتر شهاب نوریان</h2>
+                    <p class="specialty">
+فوق تخصص غدد و رشد کودکان</p>
+                    <p class="clinic-address">📍کرج، هفت تیر، بلوار دانش آموز، جنب بیمارستان قائم، کوچه شهید حیدرخانی، ساختمان پزشکان پارسیان</p>
+                    <div class="availability-badge">⏳اولین نوبت آزاد مطب:
+امروز</div>
+                    <button class="book-btn">رزرو</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
