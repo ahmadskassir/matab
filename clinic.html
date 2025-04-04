@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>matab</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
     <style>
-       body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            
-        }
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        body {
+            background-color: #f4f4f4;
+            width: 100%;
+            min-height: 100vh;
+            direction: rtl;
+        }
         .header {
-        background: linear-gradient(90deg, #007bff, #0d47a1);
-        color: white;
-        padding: 0rem;
-        display: flex;
-        font-size: 15px;
-        align-items: center;
-        width: 100%;
-    }
-        .title {
+            background: linear-gradient(90deg, #007bff, #0d47a1);
             color: white;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
         }
         .logo {
             width: 60px;
             border-radius: 30px;
         }
-
-        .container {
-            width: 100%;
-            padding: 2rem 0; /* هامش عمودي فقط */
-            display: flex;
-            justify-content: center;
-        }
-        .clinics-grid-wrapper {
-            max-width: 1200px; /* الحد الأقصى للعرض */
-            width: 100%; /* لضمان أن يأخذ العرض الكامل المتاح */
-            margin: 0 auto; /* توسيط العنصر */
-            padding: 0 1rem; /* مسافة داخلية متساوية */
+        .title {
+            color: white;
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
         }
         .login-btn {
             margin-left: auto;
@@ -61,65 +49,61 @@
         .login-btn:hover {
             background: #0d47a1;
         }
+        .container {
+            width: 100%;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        .clinics-grid-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
         .clinics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
-
         .clinic-card {
-            width: 100%; /* جعل البطاقة تأخذ العرض الكامل للخلية */
+            width: 100%;
             background: #fff;
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: box-shadow 0.2s ease;
-            border-style: hidden;
         }
-
         .clinic-card:hover {
             box-shadow: 0px 2px 4px 2.5px #0d47a1;
         }
-
         .clinic-image {
             width: 120px;
             height: 120px;
             object-fit: cover;
             border-radius: 90px;
             border: 2px solid #0d47a1;
+            display: block;
+            margin: 0 auto;
         }
-
         .clinic-details {
             padding: 1.5rem;
+            text-align: center;
         }
-
         .clinic-name {
             color: #1a237e;
             margin-bottom: 0.5rem;
         }
-
         .bio {
             color: #666;
             font-size: 0.9rem;
             margin-bottom: 0.8rem;
         }
-
         .clinic-address {
             color: #444;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-
-        .availability-badge {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1.2rem;
-            font-weight: 500;
-        }
-
         .book-btn {
             background: #1a237e;
             color: white;
@@ -131,12 +115,11 @@
             font-size: 1rem;
             transition: background 0.3s ease;
         }
-
         .book-btn:hover {
             background: #0d47a1;
         }
     </style>
-<script type="module">
+    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -156,18 +139,14 @@
         async function loadClinics() {
             try {
                 const clinicContainer = document.getElementById("clinicContainer");
-                
                 if (!clinicContainer) {
                     console.error("Element with ID 'clinicContainer' not found");
                     document.body.innerHTML += '<p class="error">Error: Clinic container not found</p>';
                     return;
                 }
-
                 clinicContainer.innerHTML = '<p>Loading clinics...</p>';
-                
                 const querySnapshot = await getDocs(collection(db, "Clinic"));
                 let clinicHTML = '';
-                
                 querySnapshot.forEach((doc) => {
                     const clinic = doc.data();
                     clinicHTML += `
@@ -187,19 +166,14 @@
                         </div>
                     `;
                 });
-
                 clinicContainer.innerHTML = clinicHTML || '<p>No clinics found</p>';
-                
                 document.querySelectorAll('.book-btn').forEach(btn => {
                     btn.addEventListener('click', () => handleBooking(btn));
                 });
-                
             } catch (error) {
                 console.error("Error loading clinics:", error);
                 const errorContainer = document.getElementById("clinicContainer") || document.body;
-                errorContainer.innerHTML = `
-                    <p class="error">Error loading clinics: ${error.message || 'Unknown error'}</p>
-                `;
+                errorContainer.innerHTML = `<p class="error">Error loading clinics: ${error.message || 'Unknown error'}</p>`;
             }
         }
 
@@ -210,15 +184,13 @@
         });
 
         function handleBooking(button) {
-            const card = button.closest('.clinic-card'); /* تصحيح ليتناسب مع اسم الكلاس */
+            const card = button.closest('.clinic-card');
             const clinicId = card.dataset.id;
             const clinicName = card.dataset.name;
-            
             console.log(`Booking clinic: ${clinicName} (ID: ${clinicId})`);
         }
-</script>
+    </script>
 </head>
-
 <body>
     <header class="header">
         <a href="file:project_main_page_code.html">
@@ -226,7 +198,7 @@
         </a>
         <h2 class="title">مطب - با ما، درمان نزدیک‌تر از همیشه</h2>
         <a href="file:sign_in_page_code.html">
-            <b><button class="login-btn" align="left" onclick="Function1()">ورود</button></b>
+            <button class="login-btn" onclick="Function1()">ورود</button>
         </a>
     </header>
     <div class="container">
