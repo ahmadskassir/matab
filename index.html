@@ -1,298 +1,479 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ar">
 <head>
-<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0dCfhLH/1111.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Almarai&amp;display=swap" rel="stylesheet">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>matab</title>
-<style> 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            
-            background-color: #f4f4f4;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+    <title>اسرار آل محمد ع</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: Tajawal, sans-serif;
+        direction: rtl;
+    }
+    .item {
+        width: 250px;
+        height: auto;
+        padding: 10px;
+        border: 2px solid #007e5f;
+        margin: 4px;
+        color: white;
+        background: #00ab81;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .item h4 {
+        margin: 5px 0;
+    }
+    .item p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    .header { 
+        font-size: 15px; 
+        display: flex; 
+        align-items: center; 
+        padding: 15px;
+        background: #00ab81; 
+        border-bottom: 2px solid #007e5f; 
+        color: white; 
+    } 
+    .title { 
+        color: white;
+        margin: 0;
+        font-size: 1.2em;
+    }
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+    .sidebar {
+        width: 200px;
+        background-color: #f0f0f0;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+    }
+    .text-container {
+        position: absolute;
+        top: 0;
+        width: 200px;
+        animation: scroll-text 29s linear infinite;
+    }
+    .text-container p {
+        margin: 0;
+        padding: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    @keyframes scroll-text {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+    }
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .buttons {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #007e5f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        flex: 1;
+    }
+    button:hover {
+        background-color: #005742;
+    }
+    .nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.25rem;
+        background-color: #acb200;
+        color: white;
+    }
+    .nav a {
+        color: white;
+        text-decoration: none;
+    }
+    .content {
+        border: 1px solid #007e5f;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    #photoContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+    }
+    #articleContainer {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+    }
+    video {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        max-height: 250px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+    }
+    .retry-button {
+        display: none;
+        margin: 10px 0;
+    }
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            height: auto;
         }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } 
-        .header {
-            background: linear-gradient(90deg, #007bff, #0d47a1);
-            color: white;
-            padding: 0.5rem;
-            display: flex;
-            align-items: center;
+        .sidebar {
             width: 100%;
-            justify-content: space-between;
+            height: 200px;
+            flex-shrink: 0;
         }
-.title { color:white; } 
-.logo { width: 60px; margin-left: 15px; border-radius: 30px; } 
-.login-btn { margin-left: auto; padding: 10px 20px; background: #1a237e; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; } 
-.login-btn:hover { background: #0d47a1; } 
-.search-container { text-align: center; padding: 40px 20px; background-color: #e9ecef; } 
-.search-box { width: 60%; padding: 12px; margin: 10px; border: 1px solid #ddd; border-radius: 25px; } 
-.image-gallery { display: flex; justify-content: space-between; padding: 30px 15%; text-align: center; dding: 5px; color: #5d5d5d } 
-.image-gallery2 { display: flex; justify-content: space-between; padding: 30px 15%; text-align: center; dding: 5px; color: #5d5d5d } 
-.card-link { text-decoration: none; color: inherit; display: block; padding: 1.5rem; } 
-.gallery-img { width: 75px; height: 75px; object-fit: cover; transition: transform 1s; } 
-.gallery-img:hover { transform: scale(1.1); } 
-.grid-container3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 30px 10%; } 
-.grid-item3 { border: 0px solid #ddd; border-radius: 15px; overflow: hidden; text-align: center; transition-duration: 0.5s; } 
-.grid-item3:hover { background-color: #0d47a1; } 
-.grid-container2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 30px 10%; } 
-.grid-item2 { border-radius: 15px; overflow: hidden; text-align: center; transition: box-shadow 0.2s; transition-duration: 0.5s; } 
-.grid-item2:hover { box-shadow: 0px 2px 4px 2.5px #0d47a1; } 
-.grid-img2 { border-radius: 100px; object-fit: cover;width: 75px; height: 75px; object-fit: cover; transition: transform 1s; }
-.grid-img2:hover { transform: scale(1); } 
-.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 30px 10%; } 
-.grid-item { border-radius: 30px; overflow: hidden; text-align: center; transition: box-shadow 0.2s; } 
-.grid-item:hover { box-shadow: 0px 2px 4px 2.5px #0d47a1;
- cursor: pointer; } 
-.grid-img { width: 100%; height: 150px; object-fit: cover; transition: transform 1s; border-bottom: 3px solid #0d47a1; } 
-.grid-img:hover { transform: scale(1); } 
-.grid-title { padding: 10px; color: #666; } 
-.grid-title2 { padding: 5px; color: black; } 
-.grid-title3 { padding: 5px; color: black; transition-duration: 0.5s; } 
-.grid-title3:hover { color:white; } 
-.B{ color:black; } 
- .doctor-details2 {
-            display: none;
-            padding: 20px;
-            border: 2px solid #007bff;
-            margin: 20px;
-            position: relative;
+        .text-container {
+            width: 100%;
         }
-</style>
-    <!-- Firebase SDK -->
+        .main-content {
+            padding: 15px;
+            overflow: visible;
+        }
+        .buttons {
+            flex-direction: column;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.25rem;
+            color: white;
+            background-color: #acb200;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+        }
+        button {
+            width: 100%;
+            margin: 5px 0;
+        }
+        #photoContainer {
+            grid-template-columns: 1fr;
+        }
+        #articleContainer {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .header {
+            padding: 10px;
+        }
+        .title {
+            font-size: 1em;
+        }
+    }
+    .contact-section {
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-top: 2px solid #007e5f;
+        direction: rtl;
+    }
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group file {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group textarea {
+        height: 100px;
+    }
+    @media (max-width: 768px) {
+        .contact-section {
+            padding: 15px;
+        }
+        .form-group input,
+        .form-group textarea {
+            font-size: 14px;
+        }
+    }
+    </style>
     <script type="module">
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
         const firebaseConfig = {
-    apiKey: "AIzaSyA8_cJnR_dEEFLiAw6mdU2k0tR3uqsmizw",
-    authDomain: "matab-dc0d4.firebaseapp.com",
-    projectId: "matab-dc0d4",
-    storageBucket: "matab-dc0d4.firebasestorage.app",
-    messagingSenderId: "209043899390",
-    appId: "1:209043899390:web:b2e0ac38f511aa7feeb6af",
-    measurementId: "G-V81HG3BDHL"
-  };
-
+            apiKey: "AIzaSyA_8I3TTKFl-5KYnhk4K_OrzqzzymzmhqU",
+            authDomain: "test-test-313.firebaseapp.com",
+            projectId: "test-test-313",
+            storageBucket: "test-test-313.appspot.com",
+            messagingSenderId: "926344113742",
+            appId: "1:926344113742:web:1ace941af9bd92eebedd1f",
+            measurementId: "G-NCC8S9Z7NX"
+        };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-async function loadDoctors() {
-    try {
-        const doctorsContainer = document.getElementById("doctorsContainer");
-        
-        if (!doctorsContainer) {
-            console.error("Element with ID 'doctorsContainer' not found");
-            return;
+        // دالة مساعدة لإعادة المحاولة
+        async function retryOperation(operation, maxAttempts = 3, delay = 1000) {
+            for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+                try {
+                    return await operation();
+                } catch (error) {
+                    if (attempt === maxAttempts) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
         }
 
-        doctorsContainer.innerHTML = '<p>loading doctors...</p>';
+        async function loadTexts() {
+            const textContainer = document.getElementById("textContainer");
+            const retryButton = document.createElement("button");
+            retryButton.className = "retry-button";
+            retryButton.textContent = "إعادة المحاولة";
+            textContainer.parentElement.appendChild(retryButton);
 
-        const querySnapshot = await getDocs(collection(db, "doctors"));
-        doctorsContainer.innerHTML = ''; 
+            retryButton.addEventListener("click", () => loadTexts());
 
-        querySnapshot.forEach((doc) => {
-            const doctor = doc.data();
-            const card = document.createElement('div');
-            card.className = 'grid-item';
+            const load = async () => {
+                textContainer.innerHTML = '<p>جار التحميل...</p>';
+                retryButton.style.display = "none";
+
+                try {
+                    const querySnapshot = await getDocs(collection(db, "texts"));
+                    let textHTML = '';
+
+                    if (querySnapshot.empty) {
+                        textContainer.innerHTML = '<p>لا توجد نصوص متاحة حاليًا</p>';
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const textData = doc.data();
+                        textHTML += `<p class="txt">${textData.text}</p><br>`;
+                    });
+
+                    textContainer.innerHTML = textHTML + textHTML;
+                } catch (error) {
+                    console.error("Error loading texts:", error);
+                    textContainer.innerHTML = '<p>حدث خطأ أثناء تحميل النصوص</p>';
+                    retryButton.style.display = "block";
+                }
+            };
+
+            await retryOperation(load);
+        }
+
+        async function loadSpecialties() {
+            const photoContainer = document.getElementById("photoContainer");
+            const retryButton = document.createElement("button");
+            retryButton.className = "retry-button";
+            retryButton.textContent = "إعادة المحاولة";
+            photoContainer.parentElement.appendChild(retryButton);
+
+            retryButton.addEventListener("click", () => loadSpecialties());
+
+            const load = async () => {
+                photoContainer.innerHTML = '<p>جار التحميل...</p>';
+                retryButton.style.display = "none";
+
+                try {
+                    const querySnapshot = await getDocs(collection(db, "image"));
+                    let photoHTML = '';
+
+                    if (querySnapshot.empty) {
+                        photoContainer.innerHTML = '<p>لا توجد صور متاحة حاليًا</p>';
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const photo = doc.data();
+                        photoHTML += `
+                            <div 
+                                data-id="${doc.id}"
+                                data-name="${photo.title}"
+                                data-image="${photo.source}">
+                                <img src="${photo.source}" alt="${photo.title}">
+                                <p>${photo.title}</p>
+                            </div>
+                        `;
+                    });
+
+                    photoContainer.innerHTML = photoHTML;
+                } catch (error) {
+                    console.error("Error loading images:", error);
+                    photoContainer.innerHTML = '<p>حدث خطأ أثناء تحميل الصور</p>';
+                    retryButton.style.display = "block";
+                }
+            };
+
+            await retryOperation(load);
+        }
+
+        async function loadarticle() {
+            const articleContainer = document.getElementById("articleContainer");
+            const retryButton = document.createElement("button");
+            retryButton.className = "retry-button";
+            retryButton.textContent = "إعادة المحاولة";
+            articleContainer.parentElement.appendChild(retryButton);
+
+            retryButton.addEventListener("click", () => loadarticle());
+
+            const load = async () => {
+                articleContainer.innerHTML = '<p>جار التحميل...</p>';
+                retryButton.style.display = "none";
+
+                try {
+                    const querySnapshot = await getDocs(collection(db, "article"));
+                    let articleHTML = '';
+
+                    if (querySnapshot.empty) {
+                        articleContainer.innerHTML = '<p>لا توجد مقالات متاحة حاليًا</p>';
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const article = doc.data();
+                        articleHTML += `
+                            <div class="item" onclick="window.location.href='article.html?id=${doc.id}'">
+                                <h4>${article.title}</h4>
+                                <p>${article.ex}</p>
+                                <h4>${article.authour}</h4>
+                            </div>
+                        `;
+                    });
+
+                    articleContainer.innerHTML = articleHTML;
+                } catch (error) {
+                    console.error("Error loading articles:", error);
+                    articleContainer.innerHTML = '<p>حدث خطأ أثناء تحميل المقالات</p>';
+                    retryButton.style.display = "block";
+                }
+            };
+
+            await retryOperation(load);
+        }
+
+        window.onload = async function() {
+            try {
+                await Promise.all([loadTexts(), loadSpecialties(), loadarticle()]);
+            } catch (error) {
+                console.error("Error loading data:", error);
+            }
+        };
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
             
-            // dataset
-            card.dataset.id = doc.id;
-            card.dataset.name = doctor.name;
-            
-            card.innerHTML = `
-                <img src="${doctor.image}" 
-                     alt="${doctor.name}" 
-                     class="grid-img"
-                     onerror="this.src='placeholder.jpg'">
-                <h3 class="grid-title2">${doctor.name}</h3>
-                <p class="grid-title">${doctor.specialty}</p>
-            `;
-
-            // click event
-            card.addEventListener('click', () => {
-                openDoctorPage(doc.id, doctor.name);
+            fetch('https://formspree.io/f/xdkepole', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('تم إرسال الرسالة بنجاح!');
+                    this.reset();
+                } else {
+                    alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقًا.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقًا.');
             });
-
-            doctorsContainer.appendChild(card);
         });
-
-        if (querySnapshot.empty) {
-            doctorsContainer.innerHTML = '<p>no available doctors</p>';
-        }
-        
-    } catch (error) {
-        console.error("Error loading doctors:", error);
-        if (doctorsContainer) {
-            doctorsContainer.innerHTML = `
-                <p class="error">error loading data: ${error.message || 'unknown error'}</p>
-            `;
-        }
-    }
-}
-
-// fun of open new page
-function openDoctorPage(doctorId) {
-   
-    window.location.href = `details.html?id=${doctorId}`;
-                    };
-
-    async function loadCities() {
-        try {
-            const citysContainer = document.getElementById("citysContainer");
-            
-            if (!citysContainer) {
-                console.error("Element with ID 'citysContainer' not found");
-                return;
-            }
-
-            citysContainer.innerHTML = '<p>Loading cities...</p>';
-            
-            const querySnapshot = await getDocs(collection(db, "citys"));
-            let citysHTML = '';
-            
-            querySnapshot.forEach((doc) => {
-                const city = doc.data();
-                citysHTML += `
-                    <div class="grid-item3"
-                         data-id="${doc.id}"
-                         data-name="${city.name}">
-                        <div class="grid-title3">${city.name}</div>
-                    </div>
-                `;
-            });
-
-            citysContainer.innerHTML = citysHTML || '<p>No cities found</p>';
-            
-        } catch (error) {
-            console.error("Error loading cities:", error);
-            if (document.getElementById("citysContainer")) {
-                document.getElementById("citysContainer").innerHTML = `
-                    <p class="error">Error loading cities: ${error.message || 'Unknown error'}</p>
-                `;
-            }
-        }
-    }
-
-SpecialtiesContainer
-
-    async function loadSpecialties() {
-        try {
-            const SpecialtiesContainer = document.getElementById("SpecialtiesContainer");
-            
-            if (!SpecialtiesContainer) {
-                console.error("Element with ID 'SpecialtiesContainer' not found");
-                return;
-            }
-
-            SpecialtiesContainer.innerHTML = '<p>Loading Specialties...</p>';
-            
-            const querySnapshot = await getDocs(collection(db, "Specialties"));
-            let SpecialtiesHTML = '';
-            
-            querySnapshot.forEach((doc) => {
-                const Specialty = doc.data();
-                SpecialtiesHTML += `
-                    <div class="grid-item2"
-                         data-id="${doc.id}"
-                         data-name="${Specialty.name}"
-                         data-image="${Specialty.image}">
-                         <img src="${Specialty.image}" class="grid-img2">
-                        <div class="grid-title2">${Specialty.name}</div>
-                    </div>
-                `;
-            });
-
-            SpecialtiesContainer.innerHTML = SpecialtiesHTML || '<p>No Specialties found</p>';
-            
-        } catch (error) {
-            console.error("Error loading Specialties:", error);
-            if (document.getElementById("SpecialtiesContainer")) {
-                document.getElementById("SpecialtiesContainer").innerHTML = `
-                    <p class="error">Error loading Specialties: ${error.message || 'Unknown error'}</p>
-                `;
-            }
-        }
-    }
-
-    async function loadAllData() {
-        try {
-            await Promise.all([
-                loadDoctors(),
-                loadCities(),
-                loadSpecialties()
-            ]);
-        } catch (error) {
-            console.error("Error in loadAllData:", error);
-        }
-    }
-
-    window.addEventListener('DOMContentLoaded', loadAllData);
-
-   function opensigninPage() {
-   
-    window.location.href = `sign_in_page_code.html`;
-                    };
-   function openprofilePage() {
-   
-    window.location.href = `index.html`;
-                    };
-   function opendoctorlistPage() {
-   
-    window.location.href = `doctor_lists_code.html`;
-                    };
-   function openclinicPage() {
-   
-    window.location.href = `clinic.html`;
-                    };
-   function openimagingPage() {
-   
-    window.location.href = `imaging.html`;
-                    };
-   function openlaboratoryPage() {
-   
-    window.location.href = `laboratory.html`;
-                    };
-    document.getElementById("signinButton").addEventListener("click", opensigninPage);
-    document.getElementById("profileButton").addEventListener("click", openprofilePage);
-    document.getElementById("clinicButton").addEventListener("click", openclinicPage); 
-    document.getElementById("imagingButton").addEventListener("click", openimagingPage);
-    document.getElementById("laboratoryButton").addEventListener("click", openlaboratryPage);
-
     </script>
 </head>
 <body>
-<div class="header">
-<img src="https://i.postimg.cc/J0dCfhLH/1111.jpg" alt="matab" class="logo" id="profileButton" onclick="openprofilePage()">
-<b><h4 align="center" class="title">مطب - با ما، درمان نزدیک‌تر از همیشه :)</h4></b>
-<b><button  id="signinButton" class="login-btn" align="left" onclick="opensigninPage()">ورود</button><b>
-</b></b></a><b><b>
-</b></b></div><b><b>
-<div class="search-container">
-<input type="text" class="search-box" placeholder="نام پزشک,تخصص,بيمارى,مركزدرمانى... ">
-<b><button class="login-btn">جستجو</button><b>
-</b></b></div><b><b>
-<div class="image-gallery">
-<img src="https://i.postimg.cc/5yF47ks4/images-removebg-preview.png" alt="آزمایشگاه" class="gallery-img" id="laboratoryButton" onclick="openlaboratoryPage()">
-<img src="https://cdn-icons-png.flaticon.com/512/5717/5717514.png" alt="کلینیک" class="gallery-img" id="clinicButton" onclick="openclinicPage()">
-<img src="https://i.postimg.cc/mrX1KJyC/images-1-removebg-preview.png" alt="مرکز تصویربرداری" class="gallery-img" id="imagingButton" onclick="openimagingPage()">
-</div>
-<div class="image-gallery">
-<h4 class="B">آزمایشگاه</h4>
-<h4 class="B">کلینیک</h4>
-<h4 class="B">تصویربرداری</h4>
-</div>
-<b><h2 class="grid-title2">تخصص‌ها</h2><b>
-<a href="file:doctor_lists_code.html" class="card-link">
-<div class="grid-container2" id="SpecialtiesContainer"></div>
-</a>
-<b><h2 class="grid-title2">شهرها</h2><b>
-<div class="grid-container3" id="citysContainer"></div>
-<b><h2 class="grid-title2">برترین پزشکان</h2><b>
-<div class="grid-container" id="doctorsContainer"></div>
-
-</body></html>
+    <header class="header">
+        <h1>اسرار آل محمد عليهم السلام</h1>
+        <p>بوابة التواصل بين الحوزة العلمية والمجتمع</p>
+    </header>
+    <nav class="nav">
+        <a href="#articles"> المقالات</a>
+        <a href="#qa"> الأسئلة</a>
+        <a href="#hadith"> الأحاديث</a>
+        <a href="#doaa"> الادعية </a>
+    </nav>
+    <div class="container">
+        <div class="sidebar">
+            <div class="text-container" id="textContainer"></div>
+        </div>
+        <div class="main-content">
+            <div class="buttons">
+                <button hidden id="show-images">الصور</button>
+                <button hidden id="show-videos">الفيديوهات</button>
+            </div>
+            <div class="content" id="articles">
+                <h2>قسم المقالات</h2>
+                <div id="articleContainer"></div>
+            </div>
+            <div class="content" id="qa">
+                <h2>قسم الأسئلة والأجوبة</h2>
+                <div id="photoContainer"></div>
+            </div>
+            <div class="content" id="hadith">
+                <h2>قسم الحديث</h2>
+                <p>محتوى الحديث هنا</p>
+            </div>
+            <div class="content" id="doaa">
+                <h2>قسم الأدعية</h2>
+                <p>محتوى الأدعية هنا</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact-section">
+        <form id="contactForm" class="contact-form">
+            <h2>اطرح سؤالاً</h2>
+            <div class="form-group">
+                <label for="name">الاسم الكامل:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="title">البريد الالكتروني:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="message"> نص السؤال :</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="button">إرسال الرسالة</button>
+        </form>
+    </div>
+</body>
+</html>
